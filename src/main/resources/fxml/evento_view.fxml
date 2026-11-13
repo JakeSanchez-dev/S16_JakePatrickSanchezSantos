@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.GridPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.empresa.eventos.controller.EventoController">
+
+    <!-- ==================== ENCABEZADO ==================== -->
+    <top>
+        <VBox spacing="10" styleClass="encabezado">
+            <Label text="Sistema de Gestion - Empresa de Eventos" styleClass="titulo"/>
+            <Label fx:id="lblEstadoConexion" text="Estado: Verificando conexion..." styleClass="estado"/>
+        </VBox>
+    </top>
+
+    <!-- ==================== CUERPO PRINCIPAL ==================== -->
+    <center>
+        <SplitPane dividerPositions="0.42">
+            <!-- Panel izquierdo: Formulario -->
+            <VBox spacing="15" styleClass="panel-formulario">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15"/>
+                </padding>
+
+                <Label text="Registro / Edicion de Evento" styleClass="subtitulo"/>
+
+                <GridPane hgap="10" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="35"/>
+                        <ColumnConstraints percentWidth="65"/>
+                    </columnConstraints>
+
+                    <Label text="Nombre del evento:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label text="Tipo de evento:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <ComboBox fx:id="cbTipoEvento" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <Label text="Cliente:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField fx:id="txtCliente" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                    <Label text="Fecha del evento:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <DatePicker fx:id="dpFecha" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                    <Label text="Lugar:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <TextField fx:id="txtLugar" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                    <Label text="Presupuesto (S/):" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <TextField fx:id="txtPresupuesto" GridPane.columnIndex="1" GridPane.rowIndex="5"
+                               promptText="Ej: 12500.00"/>
+
+                    <Label text="Estado:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                    <ComboBox fx:id="cbEstadoFormulario" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                </GridPane>
+
+                <HBox spacing="10">
+                    <Button fx:id="btnGuardar" text="Guardar" styleClass="btn-guardar" maxWidth="Infinity"/>
+                    <Button fx:id="btnActualizar" text="Actualizar" styleClass="btn-actualizar" maxWidth="Infinity"/>
+                    <Button fx:id="btnEliminar" text="Eliminar" styleClass="btn-eliminar" maxWidth="Infinity"/>
+                    <Button fx:id="btnLimpiar" text="Limpiar" styleClass="btn-limpiar" maxWidth="Infinity"/>
+                </HBox>
+            </VBox>
+
+            <!-- Panel derecho: Tabla, busqueda y reporte -->
+            <VBox spacing="10" styleClass="panel-tabla">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15"/>
+                </padding>
+
+                <Label text="Listado de Eventos" styleClass="subtitulo"/>
+
+                <!-- Busqueda y filtro -->
+                <HBox spacing="10">
+                    <Label text="Buscar (nombre / cliente):"/>
+                    <TextField fx:id="txtBuscar" promptText="Escriba para buscar..." HBox.hgrow="ALWAYS"/>
+                </HBox>
+
+                <HBox spacing="10">
+                    <Label text="Estado:"/>
+                    <ComboBox fx:id="cbFiltroEstado" HBox.hgrow="NEVER"/>
+                    <Button fx:id="btnRefrescar" text="Refrescar" HBox.hgrow="NEVER"/>
+                </HBox>
+
+                <!-- Tabla -->
+                <TableView fx:id="tablaEventos" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="colNombre" text="Nombre del evento" prefWidth="180"/>
+                        <TableColumn fx:id="colTipo" text="Tipo" prefWidth="100"/>
+                        <TableColumn fx:id="colCliente" text="Cliente" prefWidth="140"/>
+                        <TableColumn fx:id="colFecha" text="Fecha" prefWidth="90"/>
+                        <TableColumn fx:id="colLugar" text="Lugar" prefWidth="140"/>
+                        <TableColumn fx:id="colPresupuesto" text="Presupuesto" prefWidth="110"/>
+                        <TableColumn fx:id="colEstado" text="Estado" prefWidth="100"/>
+                    </columns>
+                </TableView>
+
+                <HBox spacing="10">
+                    <Button fx:id="btnExportarPDF" text="Exportar Reporte PDF"
+                            styleClass="btn-reporte" maxWidth="Infinity"/>
+                </HBox>
+            </VBox>
+        </SplitPane>
+    </center>
+</BorderPane>

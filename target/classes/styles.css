@@ -1,0 +1,158 @@
+/* ==========================================================================
+   Estilos del Sistema de Gestion - Empresa de Eventos
+   ========================================================================== */
+
+.root {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-base: #f5f7fa;
+    -fx-background-color: #f5f7fa;
+}
+
+/* --- Encabezado --- */
+.encabezado {
+    -fx-background-color: #1f3a5f;
+    -fx-padding: 15 20 15 20;
+    -fx-spacing: 5;
+}
+
+.titulo {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.estado {
+    -fx-text-fill: #d1e0ff;
+    -fx-font-size: 13px;
+}
+
+.estado-conectado {
+    -fx-text-fill: #6ee7b7;
+    -fx-font-weight: bold;
+}
+
+.estado-desconectado {
+    -fx-text-fill: #f87171;
+    -fx-font-weight: bold;
+}
+
+/* --- Paneles --- */
+.panel-formulario {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1;
+    -fx-background-radius: 8;
+}
+
+.panel-tabla {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1;
+    -fx-background-radius: 8;
+}
+
+.subtitulo {
+    -fx-text-fill: #1f3a5f;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 8 0;
+}
+
+/* --- Tabla --- */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1;
+    -fx-background-radius: 6;
+    -fx-table-cell-border-color: #f1f5f9;
+}
+
+.table-view .column-header {
+    -fx-background-color: #1f3a5f;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .cell {
+    -fx-cell-size: 24px;
+    -fx-text-fill: #334155;
+    -fx-font-size: 13px;
+}
+
+.table-view .cell:filled:selected {
+    -fx-background-color: #3b82f6;
+    -fx-text-fill: #ffffff;
+}
+
+/* --- Botones --- */
+.button {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-cursor: hand;
+}
+
+.btn-guardar {
+    -fx-background-color: #10b981;
+}
+.btn-guardar:hover {
+    -fx-background-color: #059669;
+}
+
+.btn-actualizar {
+    -fx-background-color: #3b82f6;
+}
+.btn-actualizar:hover {
+    -fx-background-color: #2563eb;
+}
+
+.btn-eliminar {
+    -fx-background-color: #ef4444;
+}
+.btn-eliminar:hover {
+    -fx-background-color: #dc2626;
+}
+
+.btn-limpiar {
+    -fx-background-color: #64748b;
+}
+.btn-limpiar:hover {
+    -fx-background-color: #475569;
+}
+
+.btn-reporte {
+    -fx-background-color: #7c3aed;
+}
+.btn-reporte:hover {
+    -fx-background-color: #6d28d9;
+}
+
+/* --- Campos de texto y controles --- */
+.text-field, .combo-box, .date-picker {
+    -fx-font-size: 13px;
+    -fx-padding: 6 8 6 8;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+}
+
+.combo-box .list-cell {
+    -fx-font-size: 13px;
+}
+
+.text-field:focused, .combo-box:focused, .date-picker:focused {
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 1;
+}
+
+/* --- SplitPane --- */
+.split-pane > .divider {
+    -fx-background-color: #cbd5e1;
+}

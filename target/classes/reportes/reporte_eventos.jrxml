@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Plantilla de reporte de Eventos con JasperReports.
+  Estudiante: Jake Patrick SANCHEZ SANTOS
+  Conecta directamente a MySQL mediante conexion JDBC pasada desde Java.
+-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="reporte_eventos"
+              pageWidth="595"
+              pageHeight="842"
+              columnWidth="555"
+              leftMargin="20"
+              rightMargin="20"
+              topMargin="20"
+              bottomMargin="20"
+              uuid="reporte-eventos-empresa">
+
+    <parameter name="REPORT_CONNECTION" class="java.sql.Connection"/>
+
+    <field name="id_evento" class="java.lang.Integer"/>
+    <field name="nombre_evento" class="java.lang.String"/>
+    <field name="tipo_evento" class="java.lang.String"/>
+    <field name="cliente" class="java.lang.String"/>
+    <field name="fecha_evento" class="java.sql.Date"/>
+    <field name="lugar" class="java.lang.String"/>
+    <field name="presupuesto" class="java.math.BigDecimal"/>
+    <field name="estado" class="java.lang.String"/>
+
+    <variable name="presupuestoTotal" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[$F{presupuesto}]]></variableExpression>
+    </variable>
+
+    <title>
+        <band height="80">
+            <staticText>
+                <reportElement x="0" y="10" width="555" height="30" uuid="titulo"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="20" isBold="true" pdfFontName="Helvetica-Bold"/>
+                </textElement>
+                <text><![CDATA[Reporte de Eventos - Empresa de Eventos]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="45" width="555" height="20" uuid="subtitulo"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="11" pdfFontName="Helvetica"/>
+                </textElement>
+                <text><![CDATA[Listado completo de eventos registrados en el sistema]]></text>
+            </staticText>
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="24">
+            <staticText>
+                <reportElement x="0" y="0" width="50" height="24" uuid="colId"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+                </textElement>
+                <text><![CDATA[ID]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="50" y="0" width="130" height="24" uuid="colNombre"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+                </textElement>
+                <text><![CDATA[Nombre del evento]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="180" y="0" width="80" height="24" uuid="colTipo"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+                </textElement>
+                <text><![CDATA[Tipo]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="260" y="0" width="130" height="24" uuid="colCliente"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+                </textElement>
+                <text><![CDATA[Cliente]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="390" y="0" width="70" height="24" uuid="colFecha"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+                </textElement>
+                <text><![CDATA[Fecha]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="460" y="0" width="95" height="24" uuid="colLugar"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+                </textElement>
+                <text><![CDATA[Lugar]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="20">
+            <textField>
+                <reportElement x="0" y="0" width="50" height="20" uuid="detId"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="10" pdfFontName="Helvetica"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{id_evento}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="50" y="0" width="130" height="20" uuid="detNombre"/>
+                <textElement>
+                    <font fontName="Arial" size="10" pdfFontName="Helvetica"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{nombre_evento}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="180" y="0" width="80" height="20" uuid="detTipo"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="10" pdfFontName="Helvetica"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{tipo_evento}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="260" y="0" width="130" height="20" uuid="detCliente"/>
+                <textElement>
+                    <font fontName="Arial" size="10" pdfFontName="Helvetica"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="390" y="0" width="70" height="20" uuid="detFecha"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="10" pdfFontName="Helvetica"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{fecha_evento}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="460" y="0" width="95" height="20" uuid="detLugar"/>
+                <textElement>
+                    <font fontName="Arial" size="10" pdfFontName="Helvetica"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{lugar}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+    <columnFooter>
+        <band height="30">
+            <staticText>
+                <reportElement x="0" y="5" width="460" height="20" uuid="totalLabel"/>
+                <textElement textAlignment="Right">
+                    <font fontName="Arial" size="11" isBold="true" pdfFontName="Helvetica-Bold"/>
+                </textElement>
+                <text><![CDATA[Presupuesto total:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="460" y="5" width="95" height="20" uuid="totalValor"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Arial" size="11" isBold="true" pdfFontName="Helvetica-Bold"/>
+                </textElement>
+                <textFieldExpression><![CDATA["S/ " + $V{presupuestoTotal}]]></textFieldExpression>
+            </textField>
+        </band>
+    </columnFooter>
+
+</jasperReport>
